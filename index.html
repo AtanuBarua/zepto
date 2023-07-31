@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-100 m-0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+      type="text/css"
+    />
+  </head>
+  <body class="h-full m-0 font-sans bg-slate-300">
+    <div class="h-screen flex">
+      <!-- components -->
+      <div
+        class="relative flex-grow overflow-auto m-3 flex-1 flex-col border border-3 border-gray-800 rounded-lg"
+      >
+        <div class="flex justify-center">
+          <button
+            class="absolute top-[-15px] bg-white px-60 py-2 mr-2 rounded-md border border-slate-950"
+          >
+            Components
+          </button>
+        </div>
+
+        <div class="mt-12"></div>
+
+        <!-- heading input -->
+        <div
+          class="relative mx-2 my-2 mt-12 border border-gray-600 rounded-md p-4 hidden"
+          id="inputHeading"
+        >
+          <button
+            class="absolute top-[-12px] left-3 bg-gray-400 rounded-lg text-sm px-1 font-bold"
+          >
+            Heading
+          </button>
+          <button
+            class="absolute top-[-12px] right-1 text-red-600 bg-gray-400 rounded-full text-sm px-1 font-bold"
+            onclick="closeItem('Heading')"
+          >
+            X
+          </button>
+          <input
+            class="block mt-3 w-full px-4 py-2 text-gray-800 placeholder-gray-400 border border-black rounded"
+            type="text"
+            placeholder="Dashboard"
+            onkeyup="updateHeading()"
+            id="heading"
+          />
+
+          <!-- alignment and coloring heading  -->
+          <div class="flex justify-between mt-2">
+            <button
+              class="bg-white px-4 text-sm rounded-md"
+              onclick="alignHeading('start')"
+            >
+              <i class="fa-solid fa-house"></i> Left
+            </button>
+            <button
+              class="bg-white px-4 text-sm rounded-md"
+              onclick="alignHeading('center')"
+            >
+              <i class="fa-solid fa-user"></i> Center
+            </button>
+            <button
+              class="bg-white px-4 text-sm rounded-md"
+              onclick="alignHeading('end')"
+            >
+              <i class="fa-solid fa-download"></i> Right
+            </button>
+            <div></div>
+            <!-- Empty div for space -->
+            <div></div>
+            <!-- Empty div for space -->
+            <div></div>
+            <!-- Empty div for space -->
+            <button
+              class="bg-white px-4 text-sm rounded-md"
+              onclick="headingColor('text-blue-600')"
+            >
+              <i class="fa-solid fa-house"></i> Blue
+            </button>
+            <button
+              class="bg-white px-4 text-sm rounded-md"
+              onclick="headingColor('text-black')"
+            >
+              <i class="fa-solid fa-user"></i> Black
+            </button>
+            <button
+              class="bg-white px-4 text-sm rounded-md"
+              onclick="headingColor('text-emerald-500')"
+            >
+              <i class="fa-solid fa-download"></i> Green
+            </button>
+          </div>
+        </div>
+
+        <!-- image input  -->
+        <div
+          class="relative mx-2 my-8 border border-gray-600 rounded-md p-3 hidden"
+          id="inputImage"
+        >
+          <button
+            class="absolute top-[-12px] left-3 bg-gray-400 rounded-md text-sm px-1 font-bold"
+          >
+            Poster Image
+          </button>
+          <button
+            class="absolute top-[-12px] right-1 text-red-600 bg-gray-400 rounded-full text-sm px-1 font-bold"
+            onclick="closeItem('Image')"
+          >
+            X
+          </button>
+          <form action="" class="dropzone mt-2">
+            <input type="file" accept="image/*" onchange="updateImage(event)" />
+          </form>
+        </div>
+
+        <!-- description input  -->
+        <div
+          class="relative mx-2 mt-8 mb-4 border border-gray-600 rounded-md p-4 hidden"
+          id="inputDesc"
+        >
+          <button
+            class="absolute top-[-12px] left-3 bg-gray-400 rounded text-sm px-1 font-bold"
+          >
+            Description
+          </button>
+          <button
+            class="absolute top-[-12px] right-1 text-red-600 bg-gray-400 rounded-full text-sm px-1 font-bold"
+            onclick="closeItem('Desc')"
+          >
+            X
+          </button>
+          <textarea
+            id="description"
+            rows="4"
+            class="mt-2 block p-2.5 w-full text-sm rounded-lg border border-gray-300 focus:border-blue-500 bg-white dark:border-gray-600"
+            placeholder="Write your thoughts here..."
+            onkeyup="updateDesc()"
+          ></textarea>
+        </div>
+
+        <!-- items selector -->
+        <h2 class="font-bold m-2 flex justify-center my-4 text-xl">Items</h2>
+        <div class="flex justify-center items-center my-4">
+          <button
+            class="bg-yellow-400 text-orange-600	 hover:bg-yellow-500 hover:text-black px-16 py-1 mr-2 rounded text-sm"
+            onclick="showItem('Heading')"
+            id="btnHeading"
+          >
+            Heading
+          </button>
+          <button
+            class="bg-teal-300 px-16 py-1 mr-2 rounded text-sm hover:bg-green-600"
+            onclick="showItem('Image')"
+            id="btnImage"
+          >
+            Image
+          </button>
+          <button
+            class="bg-sky-400 px-16 py-1 rounded text-white text-sm hover:bg-sky-800"
+            onclick="showItem('Desc')"
+            id="btnDesc"
+          >
+            Description
+          </button>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------------------ -->
+
+      <!-- preview -->
+      <div
+        class="relative flex-grow overflow-auto m-3 flex-1 flex-col border border-3 border-gray-800 rounded-lg"
+      >
+        <div class="flex justify-center">
+          <button
+            class="absolute top-[-15px] bg-white px-60 py-2 mr-2 rounded-md border border-slate-950"
+          >
+            Preview
+          </button>
+        </div>
+        <h1
+          class="flex text-4xl font-bold mt-12 mx-4 justify-start"
+          id="outputHeading"
+        ></h1>
+        <div class="flex justify-center mt-8 mx-4 hidden" id="imageDiv">
+          <img id="image" src="" class="h-48 w-full" alt="laptop" />
+        </div>
+        <textarea
+          id="outputDesc"
+          rows="7"
+          class="flex justify-center items-center mx-3 my-4 block p-1.5 w-3/4 rounded-lg bg-slate-300 text-xl"
+        ></textarea>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
+</html>
